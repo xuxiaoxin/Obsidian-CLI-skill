@@ -3,7 +3,8 @@
 A skill for AI coding agents that enables full control of [Obsidian](https://obsidian.md) vaults from the terminal using the official **Obsidian CLI** (v1.12+).
 
 ![Obsidian](https://img.shields.io/badge/Obsidian-v1.12%2B-7C3AED?logo=obsidian&logoColor=white)
-![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-D97757)
+![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-D97757)
+![Claude Code Plugin](https://img.shields.io/badge/Anthropic-Compatible-CC785C)
 
 ---
 
@@ -32,34 +33,40 @@ Covers **100+ commands** across all major areas:
 
 ## Prerequisites
 
+> Obsidian v1.12 is available to **all users** — no Early Access build or Catalyst license required.
+
 | Requirement | Details |
 |---|---|
-| **Obsidian Desktop** | v1.12.0+ (Insider / Early Access build) |
+| **Obsidian Desktop** | v1.12.0+ |
 | **CLI enabled** | Settings → Command line interface → Toggle ON |
 | **Obsidian running** | The desktop app must be running — the CLI communicates over IPC |
-| **Catalyst License** | $25 one-time (Early Access); planned to be free for all users later |
 
 ### Platform notes
 
 - **macOS / Linux** — the `obsidian` binary is added to PATH automatically when you enable CLI in settings.
-- **Windows** — requires an `Obsidian.com` redirector file placed alongside `Obsidian.exe` (available in the `#insider-desktop-release` channel on Obsidian Discord). Must run from a **normal-privilege terminal** — admin terminals produce silent failures.
+- **Windows** — requires an `Obsidian.com` redirector file placed alongside `Obsidian.exe`. Must run from a **normal-privilege terminal** — admin terminals produce silent failures.
 - **Headless Linux** — use the `.deb` package (not snap). Run under `xvfb` and prefix commands with `DISPLAY=:5`. Set `PrivateTmp=false` if running as a systemd service.
 
 ---
 
 ## Installation
 
-### Claude Code — Skills Plugin (native)
+### Claude Code — Plugin (native)
 
-1. **Clone or download** this repository:
-   ```bash
-   git clone https://github.com/pablo-mano/Obsidian-CLI-skill.git
+Install directly from GitHub using the Claude Code plugin system:
+
+1. Open Claude Code and run:
    ```
-2. **Open Claude Code** and navigate to the **Skills plugin** settings.
-3. **Import skill** — point to the cloned folder (or a `.zip` of it).
-4. Done. The skill auto-triggers whenever you ask Claude to interact with Obsidian, automate vault operations, manage daily notes, search your vault, etc.
+   /plugin marketplace add https://github.com/pablo-mano/Obsidian-CLI-skill
+   ```
+2. Install the `obsidian-cli` skill from the plugin list.
+3. Done — the skill auto-triggers when you ask Claude to interact with Obsidian, automate vault operations, manage daily notes, search your vault, etc.
 
-> The skill uses Obsidian CLI syntax and patterns from `SKILL.md` and the full command reference in `references/command-reference.md`.
+**Alternative — manual install:**
+1. Download `obsidian-cli-skill-v1.0.0.zip` from the [Releases](https://github.com/pablo-mano/Obsidian-CLI-skill/releases) page.
+2. Open Claude Code → Skills plugin settings → Import → select the `.zip`.
+
+> The `plugin.json` manifest at the repo root makes this repository directly compatible with Claude Code's plugin system.
 
 ---
 
@@ -164,4 +171,4 @@ See [`references/command-reference.md`](references/command-reference.md) for the
 
 ## License
 
-This skill is provided as-is for use with the Obsidian CLI. Obsidian itself requires a [Catalyst license](https://obsidian.md/pricing) for Early Access builds.
+This skill is provided as-is for use with the Obsidian CLI. Obsidian v1.12+ is free for all users.

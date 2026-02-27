@@ -24,15 +24,14 @@ The official Obsidian CLI (released in v1.12, February 2026) lets you control ev
 
 | Requirement | Details |
 |---|---|
-| Obsidian Desktop | **v1.12.0+** (Early Access / Insider builds) |
+| Obsidian Desktop | **v1.12.0+** |
 | CLI enabled | Settings → Command line interface → Toggle ON |
 | Obsidian running | The desktop app **must be running** for CLI to work (IPC) |
-| Catalyst License | $25 one-time (Early Access); planned free for all users later |
 
 ### Platform Notes
 
 - **macOS / Linux**: The `obsidian` binary is registered in PATH automatically when you enable CLI in settings.
-- **Windows**: Requires an `Obsidian.com` redirector file placed alongside `Obsidian.exe` (get it from the `#insider-desktop-release` channel on Obsidian Discord). **Must run with normal user privileges** — admin terminals produce silent failures.
+- **Windows**: Requires an `Obsidian.com` redirector file placed alongside `Obsidian.exe`. **Must run with normal user privileges** — admin terminals produce silent failures.
 - **Headless Linux**: Use the `.deb` package (not snap). Run under `xvfb`. Prefix commands with `DISPLAY=:5` (or your xvfb display number). Ensure `PrivateTmp=false` if running as a service.
 
 ## Syntax
