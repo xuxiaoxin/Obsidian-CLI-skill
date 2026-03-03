@@ -1,17 +1,17 @@
 ---
 name: obsidian-cli
 description: >
-  Use this skill for any workflow where the user controls Obsidian from a terminal
-  or script — not the GUI. Concrete triggers: running the `obsidian` binary and its
-  subcommands (daily:append, eval, tasks, orphans, search, property:set, etc.);
-  writing bash or Python scripts that automate vault operations; scheduling Obsidian
-  tasks via cron or systemd timers; debugging IPC socket errors or headless Linux
-  setups; evaluating JavaScript against the Obsidian API from a shell; or building
-  programmatic wrappers around the CLI. The single clearest signal: the user is
-  invoking or wants to invoke the `obsidian` command from a terminal rather than
-  clicking through the app. Skip for GUI-only questions, installing plugins or themes
-  through the Obsidian interface, iCloud/sync configuration, or processing markdown
-  files with tools that have no connection to the `obsidian` binary.
+  Use this skill whenever the user wants Claude to interact with their Obsidian vault
+  — reading notes, creating or appending content, searching, managing tasks, tags,
+  properties, daily notes, bookmarks, templates, sync, plugins, or links. The
+  underlying mechanism is the official Obsidian CLI (v1.12+), but trigger even when
+  the user doesn't mention the CLI — phrases like "add this to my daily note", "search
+  my vault", "create a note from template", or "what tasks do I have open?" all apply.
+  Also trigger for explicit CLI usage: running `obsidian` subcommands from a shell,
+  scripting or automating vault operations, scheduling via cron, debugging IPC/headless
+  Linux setups, or building programmatic wrappers. Skip only for pure GUI questions
+  (Obsidian settings navigation, theme/plugin installation via UI) or iCloud sync
+  configuration that has nothing to do with vault content.
 ---
 
 # Obsidian CLI
