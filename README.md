@@ -13,22 +13,30 @@ A skill for AI coding agents that enables full control of [Obsidian](https://obs
 
 Once installed, your AI agent will know how to interact with Obsidian vaults through the official CLI — reading, creating, and editing notes; managing daily notes; running full-text search; querying tasks, tags, links, and properties; managing plugins and sync; and running developer tools.
 
-Covers **100+ commands** across all major areas:
+Covers **130+ commands** across all major areas:
 
 | Area | Commands |
 |---|---|
-| **Files** | `read`, `create`, `append`, `prepend`, `move`, `delete`, `files`, `folders` |
-| **Daily Notes** | `daily`, `daily:read`, `daily:append`, `daily:prepend` |
-| **Search** | `search` with scoping, limits, JSON output |
-| **Properties** | `properties`, `property:read`, `property:set`, `property:remove` |
+| **Files** | `read`, `create`, `append`, `prepend`, `move`, `rename`, `delete`, `files`, `folders`, `file`, `random` |
+| **Daily Notes** | `daily`, `daily:read`, `daily:append`, `daily:prepend`, `daily:path` |
+| **Search** | `search`, `search:context` with scoping, limits, JSON output |
+| **Properties** | `properties`, `property:read`, `property:set`, `property:remove`, `aliases` |
 | **Tags** | `tags`, `tag` with counts and filtering |
 | **Tasks** | `tasks`, `task` — query, filter, toggle |
 | **Links** | `backlinks`, `links`, `unresolved`, `orphans`, `deadends` |
+| **Bookmarks** | `bookmarks`, `bookmark` |
 | **Templates** | `templates`, `template:read`, `template:insert` |
-| **Plugins** | `plugins`, `plugin:enable/disable/install/reload` |
-| **Sync** | `sync`, `sync:status`, `sync:history`, `sync:restore` |
-| **Developer** | `eval`, `dev:screenshot`, `dev:console`, `dev:errors` |
-| **Vault** | `vault`, `vaults`, `version`, `recents`, `outline`, `wordcount` |
+| **Plugins** | `plugins`, `plugin`, `plugin:enable/disable/install/uninstall`, `plugins:restrict` |
+| **Sync** | `sync`, `sync:status`, `sync:history`, `sync:read`, `sync:restore`, `sync:deleted` |
+| **Themes** | `themes`, `theme`, `theme:set`, `theme:install/uninstall` |
+| **Snippets** | `snippets`, `snippets:enabled`, `snippet:enable/disable` |
+| **Commands** | `commands`, `command`, `hotkeys`, `hotkey` |
+| **Bases** | `bases`, `base:query`, `base:views`, `base:create` |
+| **History** | `history`, `history:list`, `history:read`, `history:restore` |
+| **Workspace** | `workspace`, `tabs`, `tab:open` |
+| **Diff** | `diff` |
+| **Developer** | `eval`, `dev:screenshot`, `dev:debug`, `dev:console`, `dev:errors`, `dev:css`, `dev:dom`, `devtools` |
+| **Vault** | `vault`, `vaults`, `version`, `reload`, `restart`, `recents`, `outline`, `wordcount` |
 
 ---
 
@@ -292,6 +300,10 @@ See [`skills/obsidian-cli/references/command-reference.md`](skills/obsidian-cli/
 | Wrong vault targeted | Multi-vault ambiguity | Pass vault name as the first argument: `obsidian "My Vault" ...` |
 | IPC socket not found (Linux) | `PrivateTmp=true` in systemd unit | Set `PrivateTmp=false` |
 | Snap confinement errors | Snap restricts IPC | Use the `.deb` package instead |
+| Multi-vault `"Name" command` fails | Vault name matching issue | Omit vault name; switch vault manually in Obsidian UI |
+| `property:set` list value is a string | CLI stores value as-is | Edit frontmatter directly or use `eval` to call Obsidian API |
+| Colon+params exit 127 (missing `.com`) | Outdated installer — `Obsidian.com` absent | Reinstall from [obsidian.md/download](https://obsidian.md/download) |
+| Colon+params exit 127 (Git Bash / MSYS2) | Bash resolves `obsidian` to `.exe` not `.com` | Create `~/bin/obsidian` wrapper: `#!/bin/bash` + `/c/path/to/Obsidian.com "$@"`, add `export PATH="$HOME/bin:$PATH"` to `~/.bashrc` |
 
 ---
 

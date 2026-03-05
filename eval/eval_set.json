@@ -40,6 +40,46 @@
     "should_trigger": true
   },
   {
+    "query": "check the sync history for my important.md and restore the version from two days ago",
+    "should_trigger": true
+  },
+  {
+    "query": "list all my bookmarks in obsidian",
+    "should_trigger": true
+  },
+  {
+    "query": "run obsidian eval to count how many markdown files have a 'status' property set to 'done'",
+    "should_trigger": true
+  },
+  {
+    "query": "find all notes in my vault that link to projects/q1-review.md",
+    "should_trigger": true
+  },
+  {
+    "query": "take a screenshot of my current obsidian view and save it to screenshots/",
+    "should_trigger": true
+  },
+  {
+    "query": "show me all tags in my vault sorted by how often they're used",
+    "should_trigger": true
+  },
+  {
+    "query": "query my Obsidian Bases 'Tasks' view and show all entries where priority is high",
+    "should_trigger": true
+  },
+  {
+    "query": "what notes have i opened recently in obsidian?",
+    "should_trigger": true
+  },
+  {
+    "query": "delete my scratch/temp-ideas.md note permanently",
+    "should_trigger": true
+  },
+  {
+    "query": "rename my 'Meeting 2026-02-28.md' note to 'Sprint Retro 2026-02-28.md'",
+    "should_trigger": true
+  },
+  {
     "query": "how do i change the accent color in obsidian? i want something more muted than the default purple",
     "should_trigger": false
   },
@@ -77,6 +117,26 @@
   },
   {
     "query": "i'm writing a python script to parse markdown files from my notes folder and extract all the headings into a CSV — what's the best library for this?",
+    "should_trigger": false
+  },
+  {
+    "query": "how does obsidian's graph view work? i want to understand what the clusters represent",
+    "should_trigger": false
+  },
+  {
+    "query": "is there a way to publish my obsidian vault publicly? what are the options?",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i configure a hotkey in obsidian to run a specific command from the command palette?",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what the 'unresolved links' section in obsidian's graph view means",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i use templater plugin variables like {{date}} in obsidian?",
     "should_trigger": false
   }
 ]
