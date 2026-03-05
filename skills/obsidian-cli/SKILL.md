@@ -1,5 +1,6 @@
 ---
 name: obsidian-cli
+version: "1.3.0"
 description: >
   Use this skill whenever the user wants Claude to directly interact with their
   Obsidian vault — reading a note or daily note, writing or appending content,
@@ -8,10 +9,37 @@ description: >
   has no way to access vault data or execute vault operations. Treat any request that
   implies "go into my vault and do X" as a trigger — the user is asking Claude to act,
   not to explain. Also trigger for vault automation, CLI scripting, or cron-based
-  workflows involving Obsidian. Skip for pure conceptual questions: how Obsidian's GUI
-  works, navigating settings menus, theme or plugin installation via the UI, or general
-  Dataview query syntax — anything where the user needs an explanation rather than
-  Claude performing a vault operation.
+  workflows involving Obsidian, managing sync history, querying Bases, restoring file
+  versions via history, managing bookmarks, or running JavaScript against the Obsidian
+  API. Skip for pure conceptual questions: how Obsidian's GUI works, navigating settings
+  menus, theme or plugin installation via the UI, iCloud/third-party sync conflicts,
+  general Dataview query syntax, keyboard shortcuts, or parsing vault files with external
+  scripts — anything where the user needs an explanation rather than Claude performing a
+  vault operation.
+triggers:
+  - "obsidian"
+  - "vault"
+  - "daily note"
+  - "obsidian cli"
+  - "note"
+  - "append to"
+  - "prepend to"
+  - "search my vault"
+  - "create a note"
+  - "read note"
+  - "move note"
+  - "rename note"
+  - "delete note"
+  - "tasks in obsidian"
+  - "open tasks"
+  - "backlinks"
+  - "orphaned notes"
+  - "broken links"
+  - "frontmatter"
+  - "properties"
+  - "sync history"
+  - "obsidian bases"
+  - "file history"
 ---
 
 # Obsidian CLI
