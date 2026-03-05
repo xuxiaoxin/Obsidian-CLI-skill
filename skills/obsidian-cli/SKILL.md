@@ -34,6 +34,8 @@ The official Obsidian CLI (released in v1.12, February 2026) lets you control ev
 
 - **macOS / Linux**: The `obsidian` binary is registered in PATH automatically when you enable CLI in settings.
 - **Windows**: Requires an `Obsidian.com` redirector file placed alongside `Obsidian.exe`. **Must run with normal user privileges** — admin terminals produce silent failures.
+  - If colon subcommands (`property:set`, `daily:append`, etc.) with parameters return exit 127, check that `Obsidian.com` exists alongside `Obsidian.exe`. If missing, you have an outdated installer — download the latest from [obsidian.md/download](https://obsidian.md/download) and reinstall.
+  - **Git Bash / MSYS2 users**: Bash resolves `obsidian` to `Obsidian.exe` (GUI) instead of `Obsidian.com` (CLI), causing colon+params to fail with exit 127 even when `Obsidian.com` is present. Create a wrapper script — see Troubleshooting.
 - **Headless Linux**: Use the `.deb` package (not snap). Run under `xvfb`. Prefix commands with `DISPLAY=:5` (or your xvfb display number). Ensure `PrivateTmp=false` if running as a service.
 
 ## Syntax
@@ -241,6 +243,7 @@ obsidian command id="dataview:dataview-force-refresh-views"
     obsidian eval code="$(cat /tmp/obs.js)"
     ```
 12. **Multi-vault targeting may not work in all environments** — `obsidian "My Vault" command` can return `Error: Command "My Vault" not found` on some setups. If this happens, omit the vault name (CLI targets the most recently active vault) and switch vaults manually in the Obsidian UI.
+13. **When colon subcommands are unavailable** (e.g. Windows Git Bash without wrapper), prefer non-colon alternatives: use `properties` instead of `property:read`, and `obsidian daily:path` + `append` instead of `daily:append`.
 
 ## Troubleshooting
 
@@ -254,3 +257,5 @@ obsidian command id="dataview:dataview-force-refresh-views"
 | Snap confinement issues | Snap restricts IPC | Use `.deb` package instead |
 | Multi-vault `"Name" command` fails | Vault name matching issue | Omit vault name; target most recent vault |
 | `property:set` list value is a string | CLI stores value as-is | Edit frontmatter directly or use `eval` |
+| Colon+params exit 127 (missing `.com`) | Outdated installer — `Obsidian.com` absent | Reinstall from [obsidian.md/download](https://obsidian.md/download) |
+| Colon+params exit 127 (Git Bash / MSYS2) | Bash resolves `obsidian` to `.exe` not `.com` | Create `~/bin/obsidian` wrapper: `#!/bin/bash` / `/c/path/to/Obsidian.com "$@"` and add `export PATH="$HOME/bin:$PATH"` to `~/.bashrc` |
