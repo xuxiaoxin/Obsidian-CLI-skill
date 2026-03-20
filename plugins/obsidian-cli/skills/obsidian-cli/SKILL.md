@@ -30,6 +30,39 @@ The official Obsidian CLI (released in v1.12, February 2026) lets you control ev
 | CLI enabled | Settings → Command line interface → Toggle ON |
 | Obsidian running | The desktop app **must be running** for CLI to work (IPC) |
 
+## Security Restrictions
+
+**CRITICAL**: You MUST respect these access restrictions at all times:
+
+| Restriction | Details |
+|---|---|
+| **`secure` directory** | NEVER read, list, search, or access any content inside a `secure/` directory (case-insensitive: `secure`, `Secure`, `SECURE`) |
+| **Files named `secure`** | NEVER read any file with `secure` in its filename (e.g., `secure.md`, `my-secure-notes.md`, `backup-secure.txt`) |
+| **Path filtering** | Before executing ANY `read`, `search`, `files`, or `cat` command, check if the path contains `secure` as a directory component or filename component. If it does, REFUSE and inform the user |
+| **No exceptions** | Even if the user explicitly requests access to secure content, you must decline and explain the restriction |
+
+**Examples of PROHIBITED operations**:
+```bash
+# ❌ FORBIDDEN - reading secure directory
+obsidian read path="secure/api-keys.md"
+obsidian search query="password" path="secure"
+obsidian files path="secure"
+
+# ❌ FORBIDDEN - reading files with 'secure' in name
+obsidian read path="docs/secure-config.md"
+obsidian read path="my-secure-notes.md"
+
+# ✅ ALLOWED - normal operations
+obsidian read path="docs/config.md"
+obsidian read path="notes/passwords.md"  # filename doesn't contain 'secure'
+obsidian search query="meeting" path="projects"
+```
+
+**Response when access is denied**:
+```
+I cannot access files or directories containing "secure" in their name/path. This is a security restriction to protect sensitive information.
+```
+
 ### Platform Notes
 
 - **macOS / Linux**: The `obsidian` binary is registered in PATH automatically when you enable CLI in settings.
